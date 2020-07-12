@@ -4,7 +4,6 @@ from django.shortcuts import render
 
 from django.shortcuts import render
 
-
 from .job import job_data
 
 
@@ -37,6 +36,10 @@ def jobs(request):
 
             }
 
-        return render(request, 'index.html', context)
+        return render(request, 'job.html', context)
 
+    return render(request, 'job.html')
+
+
+def home(request):
     return render(request, 'index.html')
