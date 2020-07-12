@@ -1,73 +1,200 @@
-<!doctype html>
+{% load static %}
+<!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Required meta tags -->
+    <title>ZabJob</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    
+    <link href="https://fonts.googleapis.com/css?family=Nunito+Sans:200,300,400,600,700,800,900" rel="stylesheet">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
 
-    <title>Job portal</title>
+    <link rel="stylesheet" href="{% static 'css/aos.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %}">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %}">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %}">
+
+    
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
   </head>
   <body>
+    
+	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
+	    <div class="container">
+	      <a class="navbar-brand" href="index.html">ZabJob</a>
+	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
+	        <span class="oi oi-menu"></span> Menu
+	      </button>
 
+	      <div class="collapse navbar-collapse" id="ftco-nav">
+	        <ul class="navbar-nav ml-auto">
+	          <li class="nav-item active"><a href="{% url 'core:home' %}" class="nav-link">Home</a></li>
+	        </ul>
+	      </div>
+	    </div>
+	  </nav>
+    <!-- END nav -->
+    
+    <div class="hero-wrap js-fullheight" style="background-image: url('{% static 'images/bg_2.jpg' %}');" data-stellar-background-ratio="0.5">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row no-gutters slider-text js-fullheight align-items-center justify-content-start" data-scrollax-parent="true">
+          <div class="col-xl-10 ftco-animate mb-5 pb-5" data-scrollax=" properties: { translateY: '70%' }">
+          	<p class="mb-4 mt-5 pt-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">We have <span class="number" data-number="850000">0</span> great job offers you deserve!</p>
+            <h1 class="mb-5" data-scrollax="properties: { translateY: '30%', opacity: 1.6 }">Your Dream <br><span>Job is Waiting</span></h1>
 
-<div class="container mt-10 p-5 text-justify">
-  <nav>
+						<div class="ftco-search">
+							<div class="row">
+		            <div class="col-md-12 nav-link-wrap">
+			            <div class="nav nav-pills text-center" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <a class="nav-link active mr-md-1" id="v-pills-1-tab" data-toggle="pill" href="#v-pills-1" role="tab" aria-controls="v-pills-1" aria-selected="true">Find a Job</a>
+                  </div>
+			          </div>
+			          <div class="col-md-12 tab-wrap">
+			            
+			            <div class="tab-content p-4" id="v-pills-tabContent">
 
-    <button class="btn btn-danger" type="button"><a class="text-white" href="{% url 'home'%}">Home</a></button>
-
-  </nav>
-<h1 class="text-center">Job Search Here..!</h1>
-
-<form action="" method="POST">{% csrf_token %}
-    <!-- Search form -->
-<div class="active-pink-3 active-pink-4 mb-4 col-xs-4">
-    <input name='title' class="form-control col-xs-4" type="text" placeholder="Enter job Title" aria-label="Search" required>
-  </div>
-  <!-- Search form -->
-  <div class="active-purple-3 active-purple-4 mb-4">
-    <input name ='location' class="form-control" type="text" placeholder="Enter Location" aria-label="Search" required>
-  </div>
-  <button class='btn btn-success' type="submit">Search</button>
-</form>
-
-<h1 class='text-center'>Job Results Here</h1>
-
-<h1> {{message}} </h1>
-
-<hr>
-    {% for title,comapny,summary,date,link in data %}
-
-
-    <div class="card">
-        <div class="card-header">
-         New
-        </div>
-        <div class="card-body">
-          <h5 class="card-title">Job Title: {{ title }}</h5>
-          <b class="card-title">Company: {{ comapny }}</b>
-          <p class="card-text">job Description: {{ summary }}</p>
-          <p class="card-text">Posted:{{ date }}</p>
-          <a href="{{ link }}" class="btn btn-info">Apply</a>
+			              <div class="tab-pane fade show active" id="v-pills-1" role="tabpanel" aria-labelledby="v-pills-nextgen-tab">
+			              	<form action="" class="search-job" method="POST">
+								{% csrf_token %}
+			              		<div class="row">
+			              			<div class="col-md">
+			              				<div class="form-group">
+				              				<div class="form-field">
+				              					<div class="icon"><span class="icon-briefcase"></span></div>
+								                <input type="text" name="title" class="form-control" placeholder="eg. Garphic. Web Developer" required>
+								              </div>
+							              </div>
+			              			</div>
+			              		  <div class="col-md">
+			              				<div class="form-group">
+			              					<div class="form-field">
+				              					<div class="icon"><span class="icon-map-marker"></span></div>
+								                <input type="text" class="form-control" placeholder="Location" name="location" required>
+								              </div>
+							              </div>
+			              			</div>
+			              			<div class="col-md">
+			              				<div class="form-group">
+			              					<div class="form-field">
+								                <input type="submit" value="Search" class="form-control btn btn-primary">
+								              </div>
+							              </div>
+			              			</div>
+			              		</div>
+			              	</form>
+			              </div>
+			            </div>
+			          </div>
+			        </div>
+		        </div>
+          </div>
         </div>
       </div>
-      {% endfor %}
-
-      <footer>
-        <div class="row">
-          <p class='p-3'>&copy; </p>
-          <p class='p-3'>Visit us: <a href="" target="_blank">DevPyJp</a> </p>
-          <p class='p-3'>Watch us: <a href="" target="_blank">Jp NAN</a> </p>
-        </div>
-      </footer>
-
     </div>
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+	  <section class="ftco-section bg-light">
+			<div class="container">
+				<div class="row justify-content-center mb-5 pb-3">
+					<div class="col-md-7 heading-section text-center ftco-animate">
+						<h2 class="mb-4"><span>Search</span> Jobs</h2>
+						<h2>{{ message }}</h2>
+                    </div>
+				</div>
+				<div class="row">
+					<div class="col-md-12 ftco-animate">
+						{% for title,comapny,summary,date,link in data %}
+						<div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+							<div class="mb-4 mb-md-0 mr-5">
+								<div class="job-post-item-header d-flex align-items-center">
+									<h2 class="mr-3 text-black h3">{{ title }}</h2>
+								</div>
+								<div>
+									<h5 class="mr-3 text-black h5"> {{ summary }}</h5>
+								</div>
+								<div class="job-post-item-body d-block d-md-flex">
+									<div class="mr-3"><span class="icon-layers"></span>{{ comapny }}</div>
+									<div><span>{{ date }}</span></div>
+                                </div>
+                            </div>
+							<div class="ml-auto d-flex">
+								<a href="{{ link }}" class="btn btn-primary py-2 mr-1">Apply Job</a>
+							</div>
+                        </div>
+						{% endfor %}
+                    </div><!-- end -->
+				</div>
+			</div>
+		</section>
+	  <footer class="ftco-footer ftco-bg-dark ftco-section">
+		  <div class="container">
+			  <div class="row mb-5">
+				  <div class="col-md">
+					  <div class="ftco-footer-widget mb-4">
+						  <h2 class="ftco-heading-2">About</h2>
+						  <p>Our mission is empowering employment. We are striving to organize all the world’s human capital data and make it meaningful for society</p>
+						  <ul class="ftco-footer-social list-unstyled float-md-left float-lft mt-3">
+							  <li class="ftco-animate"><a href="#"><span class="icon-twitter"></span></a></li>
+							  <li class="ftco-animate"><a href="#"><span class="icon-facebook"></span></a></li>
+							  <li class="ftco-animate"><a href="#"><span class="icon-instagram"></span></a></li>
+						  </ul>
+                      </div>
+                  </div>
+				  <div class="col-md">
+					  <div class="ftco-footer-widget mb-4">
+						  <h2 class="ftco-heading-2">Have a Questions?</h2>
+						  <div class="block-23 mb-3">
+							  <ul>
+								  <li><span class="icon icon-map-marker"></span><span class="text">203 Malappuram, kerala, India</span></li>
+								  <li><a href="#"><span class="icon icon-phone"></span><span class="text">+91 9497575968</span></a></li>
+								  <li><a href="#"><span class="icon icon-envelope"></span><span class="text">info@zabjob.com</span></a></li>
+	                          </ul>
+						  </div>
+					  </div>
+                  </div>
+			  </div>
+			  <div class="row">
+				  <div class="col-md-12 text-center">
+					  <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="icon-heart text-danger" aria-hidden="true"></i> by <a href="https://safwanvk.live" target="_blank">Safwan</a>
+  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+				  </div>
+			  </div>
+		  </div>
+	  </footer>
+    
+  
+
+  <!-- loader -->
+  <div id="ftco-loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#F96D00"/></svg></div>
+
+
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/jquery-migrate-3.0.1.min.js' %}"></script>
+  <script src="{% static 'js/popper.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/jquery.easing.1.3.js' %}"></script>
+  <script src="{% static 'js/jquery.waypoints.min.js' %}"></script>
+  <script src="{% static 'js/jquery.stellar.min.js' %}"></script>
+  <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>
+  <script src="{% static 'js/aos.js' %}"></script>
+  <script src="{% static 'js/jquery.animateNumber.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap-datepicker.js' %}"></script>
+  <script src="{% static 'js/jquery.timepicker.min.js' %}"></script>
+  <script src="{% static 'js/scrollax.min.js' %}"></script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false"></script>
+  <script src="{% static 'js/google-map.js' %}' %}"></script>
+  <script src="{% static 'js/main.js' %}"></script>
+    
   </body>
 </html>
